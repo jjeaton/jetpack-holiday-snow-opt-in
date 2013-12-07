@@ -17,6 +17,8 @@ Make Jetpack's Holiday Snow feature accessible by only showing it if user has op
 
 Requires Jetpack (obviously)
 
+If you're a user and interested in being able to block the Jetpack Holiday Snow from loading on any site you visit, check out my Chrome Extension: [Block Holiday Snow](https://github.com/jjeaton/block-holiday-snow).
+
 ## Installation ##
 
 Normal installation method through the Plugins menu.
