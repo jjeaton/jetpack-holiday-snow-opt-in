@@ -14,7 +14,7 @@
  * Plugin Name: Jetpack Holiday Snow Opt-In
  * Plugin URI:  http://www.josheaton.org/
  * Description: Make Jetpack's Holiday Snow feature accessible by only showing it if user has opted-in by clicking a snowflake displayed on the page.
- * Version:     0.1.1
+ * Version:     0.1.2
  * Author:      Josh Eaton
  * Author URI:  http://www.josheaton.org/
  * Text Domain: jetpack-holiday-snow-opt-in
@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 class Jetpack_Holiday_Snow_OptIn {
 
-	protected $version = '0.1.1';
+	protected $version = '0.1.2';
 	protected $plugin_slug = 'jetpack-holiday-snow-opt-in';
 	protected static $instance = null;
 	protected $plugin_screen_hook_suffix = null;
@@ -102,7 +102,7 @@ class Jetpack_Holiday_Snow_OptIn {
 
 	public function jetpack_active_check() {
 
-		if ( class_exists( 'Jetpack_Holiday_Snow_Settings' ) ) {
+		if ( class_exists( 'Jetpack' ) ) {
 			$this->jetpack = true;
 			return true;
 		}
