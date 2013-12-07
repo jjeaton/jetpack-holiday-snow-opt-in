@@ -14,7 +14,7 @@
  * Plugin Name: Jetpack Holiday Snow Opt-In
  * Plugin URI:  http://www.josheaton.org/
  * Description: Make Jetpack's Holiday Snow feature accessible by only showing it if user has opted-in by clicking a snowflake displayed on the page.
- * Version:     0.1.0
+ * Version:     0.1.1
  * Author:      Josh Eaton
  * Author URI:  http://www.josheaton.org/
  * Text Domain: jetpack-holiday-snow-opt-in
@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 class Jetpack_Holiday_Snow_OptIn {
 
-	protected $version = '0.1.0';
+	protected $version = '0.1.1';
 	protected $plugin_slug = 'jetpack-holiday-snow-opt-in';
 	protected static $instance = null;
 	protected $plugin_screen_hook_suffix = null;
@@ -46,7 +46,7 @@ class Jetpack_Holiday_Snow_OptIn {
 	/**
 	 * Initialize the plugin by setting localization, filters, and administration functions.
 	 *
-	 * @since     0.1.0
+	 * @since     0.1.1
 	 */
 	private function __construct() {
 
@@ -55,27 +55,24 @@ class Jetpack_Holiday_Snow_OptIn {
 
 		// Initialize snow status
 		$this->snowing = false;
+		$this->jetpack = false;
 
-		add_action( 'admin_notices', array( $this, 'jetpack_active_check' ), 10 );
+		add_action( 'plugins_loaded', array( $this, 'jetpack_active_check'   ), 15 );
 
 		// Load plugin text domain
-		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
+		add_action( 'init',           array( $this, 'load_plugin_textdomain' )     );
 
-		// Add a filter so we can control the snow
-		add_filter( 'jetpack_holiday_chance_of_snow', array( $this, 'should_it_snow' ) );
+		// Load the plugin if we're in season
+		add_action( 'init',           array( $this, 'run_if_in_season'       ), 1  );
 
 		// Check for snow cookies (yum!) or snow control requests
-		add_action( 'init',      array( $this, 'process_snow_opt_in' ), 1 );
-
-		// Add our snow control and styles
-		add_action( 'wp_head',   array( $this, 'add_snow_css'    ) );
-		add_action( 'wp_footer', array( $this, 'add_snow_opt_in' ) );
+		add_action( 'init',           array( $this, 'process_snow_opt_in'    ), 2  );
 	}
 
 	/**
 	 * Return an instance of this class.
 	 *
-	 * @since     0.1.0
+	 * @since     0.1.1
 	 *
 	 * @return    object    A single instance of this class.
 	 */
@@ -92,7 +89,7 @@ class Jetpack_Holiday_Snow_OptIn {
 	/**
 	 * Load the plugin text domain for translation.
 	 *
-	 * @since    0.1.0
+	 * @since    0.1.1
 	 */
 	public function load_plugin_textdomain() {
 
@@ -105,24 +102,31 @@ class Jetpack_Holiday_Snow_OptIn {
 
 	public function jetpack_active_check() {
 
-		$screen = get_current_screen();
+		if ( class_exists( 'Jetpack_Holiday_Snow_Settings' ) ) {
+			$this->jetpack = true;
+			return true;
+		}
 
-		if ( $screen->parent_file !== 'plugins.php' )
+		$this->jetpack = false;
+		return false;
+
+	}
+
+	public function run_if_in_season() {
+
+		if ( ! $this->jetpack ) {
+			return;
+		}
+
+		if ( ! jetpack_is_holiday_snow_season() )
 			return;
 
-		// check for active and bail if true
-		if ( is_plugin_active( 'jetpack/jetpack.php' ) )
-			return;
+		// Add a filter so we can control the snow
+		add_filter( 'jetpack_holiday_chance_of_snow', array( $this, 'should_it_snow' ) );
 
-		// not active. show message
-		echo '<div id="message" class="error fade below-h2"><p><strong>'.__( 'Jetpack Holiday Snow Opt-In requires Jetpack to function.', 'jetpack-holiday-snow-opt-in' ).'</strong></p></div>';
-
-		// hide activation method
-		unset( $_GET['activate'] );
-
-		// deactivate YOURSELF
-		deactivate_plugins( plugin_basename( __FILE__ ) );
-
+		// Add our snow control and styles
+		add_action( 'wp_head',   array( $this, 'add_snow_css'    ) );
+		add_action( 'wp_footer', array( $this, 'add_snow_opt_in' ) );
 	}
 
 	public function should_it_snow( $snow ) {
@@ -211,8 +215,12 @@ body.admin-bar #jetpack-holiday-snow-opt-in {
 
 	public function process_snow_opt_in() {
 
+		if ( ! $this->jetpack ) {
+			return;
+		}
+
 		// check if the snow option is enabled, if not, bail
-		if ( ! get_option( jetpack_holiday_snow_option_name() ) ) {
+		if ( ! get_option( jetpack_holiday_snow_option_name() ) || ! jetpack_is_holiday_snow_season() ) {
 			return;
 		}
 

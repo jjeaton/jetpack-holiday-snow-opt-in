@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: jetpack, accessibility  
 Requires at least: 3.7  
 Tested up to: 3.7.1  
-Stable tag: 0.1.0  
+Stable tag: 0.1.1  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -30,6 +30,11 @@ Nothing has been frequently asked, yet.
 1. Example of the snowflake snow control shown on the front end.
 
 ## Changelog ##
+
+### 0.1.1 ###
+
+* Modified the check for Jetpack.
+* Snowflake now disappears automatically once the Jetpack holiday snow season is over.
 
 ### 0.1.0 ###
 
