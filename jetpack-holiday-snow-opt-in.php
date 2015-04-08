@@ -102,13 +102,15 @@ class Jetpack_Holiday_Snow_OptIn {
 
 	public function jetpack_active_check() {
 
-		if ( class_exists( 'Jetpack' ) ) {
+		$this->jetpack = false;
+
+		// Confirm Jetpack is loaded and the holiday-snow.php file is loaded
+		if ( class_exists( 'Jetpack' ) && function_exists( 'jetpack_is_holiday_snow_season' ) ) {
 			$this->jetpack = true;
-			return true;
+			return $this->jetpack;
 		}
 
-		$this->jetpack = false;
-		return false;
+		return $this->jetpack;
 
 	}
 
