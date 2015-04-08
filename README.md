@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: jetpack, accessibility  
 Requires at least: 3.7  
 Tested up to: 3.7.1  
-Stable tag: 0.1.2  
+Stable tag: 0.1.3  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -32,6 +32,10 @@ Nothing has been frequently asked, yet.
 1. Example of the snowflake snow control shown on the front end.
 
 ## Changelog ##
+
+### 0.1.3 - 2015-04-08 ###
+
+* Fixed Jetpack check to include check for `jetpack_is_holiday_snow_season` function.
 
 ### 0.1.2 ###
 
