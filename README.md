@@ -5,7 +5,7 @@
 **Tags:** jetpack, accessibility    
 **Requires at least:** 3.7    
 **Tested up to:** 3.7.1    
-**Stable tag:** 0.1.3    
+**Stable tag:** 0.1.4    
 **License:** GPLv2 or later    
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html    
 
@@ -34,6 +34,14 @@ Nothing has been frequently asked, yet.
 
 
 ## Changelog ##
+
+### 0.1.4 - 2016-12-04 ###
+
+* Fixed theme compatibility with increased z-index.
+* Minor code cleanup.
+* The snow icon no longer spins.
+* Added POT file and removed plugin textdomain call.
+* Tested up to WP 4.6.1.
 
 ### 0.1.3 - 2015-04-08 ###
 
