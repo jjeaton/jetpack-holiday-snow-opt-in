@@ -59,9 +59,6 @@ class Jetpack_Holiday_Snow_OptIn {
 
 		add_action( 'plugins_loaded', array( $this, 'jetpack_active_check' ), 15 );
 
-		// Load plugin text domain.
-		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
-
 		// Load the plugin if we're in season.
 		add_action( 'init', array( $this, 'run_if_in_season' ), 1 );
 
@@ -84,20 +81,6 @@ class Jetpack_Holiday_Snow_OptIn {
 		}
 
 		return self::$instance;
-	}
-
-	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since    0.1.1
-	 */
-	public function load_plugin_textdomain() {
-
-		$domain = $this->plugin_slug;
-		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
-
-		load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $domain, false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 	}
 
 	public function jetpack_active_check() {
