@@ -148,6 +148,7 @@ class Jetpack_Holiday_Snow_OptIn {
 <style type="text/css">
 #jetpack-holiday-snow-opt-in {
 	position: absolute;
+	z-index: 9999;
 	width: 30px;
 	height: 30px;
 	top: 0;
@@ -156,6 +157,7 @@ class Jetpack_Holiday_Snow_OptIn {
 	background-color: rgba(0, 0, 0, 0.7);
 	border-bottom-right-radius: 5px;
 	border-bottom-left-radius: 5px;
+	cursor: hand;
 }
 #jetpack-holiday-snow-opt-in * {
 	color: #fff;
