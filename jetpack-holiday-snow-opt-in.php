@@ -146,14 +146,6 @@ class Jetpack_Holiday_Snow_OptIn {
 
 		?>
 <style type="text/css">
-@-webkit-keyframes spin {
-	from { -webkit-transform: rotate(0deg);   }
-	to   { -webkit-transform: rotate(360deg); }
-}
-@keyframes spin {
-	from { transform: rotate(0deg);   }
-	to   { transform: rotate(360deg); }
-}
 #jetpack-holiday-snow-opt-in {
 	position: absolute;
 	width: 30px;
@@ -172,12 +164,6 @@ class Jetpack_Holiday_Snow_OptIn {
 	display: block;
 	padding: 2px 7px;
 	text-decoration: none;
-}
-#jetpack-holiday-snow-opt-in a:hover span {
-	display: block;
-	-webkit-animation: spin 6s linear infinite;
-	animation:         spin 6s linear infinite;
-	color: #fff;
 }
 body.admin-bar #jetpack-holiday-snow-opt-in {
 	top: 28px;
