@@ -30,7 +30,6 @@ Nothing has been frequently asked, yet.
 ## Screenshots ##
 
 ### 1. Example of the snowflake snow control shown on the front end. ###
-
 ![Example of the snowflake snow control shown on the front end.](http://ps.w.org/jetpack-holiday-snow-opt-in/assets/screenshot-1.png)
 
 
