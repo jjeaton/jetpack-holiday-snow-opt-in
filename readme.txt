@@ -33,6 +33,14 @@ Nothing has been frequently asked, yet.
 
 == Changelog ==
 
+= 0.1.4 - 2016-12-04 =
+
+* Fixed theme compatibility with increased z-index.
+* Minor code cleanup.
+* The snow icon no longer spins.
+* Added POT file and removed plugin textdomain call.
+* Tested up to WP 4.6.1.
+
 = 0.1.3 - 2015-04-08 =
 
 * Fixed Jetpack check to include check for `jetpack_is_holiday_snow_season` function.
