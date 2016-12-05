@@ -4,7 +4,7 @@
 **Donate link:** https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7DR8UF55NRFTS    
 **Tags:** jetpack, accessibility    
 **Requires at least:** 3.7    
-**Tested up to:** 3.7.1    
+**Tested up to:** 4.6.1    
 **Stable tag:** 0.1.4    
 **License:** GPLv2 or later    
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html    
@@ -34,6 +34,11 @@ Nothing has been frequently asked, yet.
 
 
 ## Changelog ##
+
+### 0.1.5 - 2016-12-04 ###
+
+* Bump tested up to version to 4.6.1.
+* Fix textdomain path
 
 ### 0.1.4 - 2016-12-04 ###
 

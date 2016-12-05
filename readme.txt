@@ -33,6 +33,11 @@ Nothing has been frequently asked, yet.
 
 == Changelog ==
 
+= 0.1.5 - 2016-12-04 =
+
+* Bump tested up to version to 4.6.1.
+* Fix textdomain path
+
 = 0.1.4 - 2016-12-04 =
 
 * Fixed theme compatibility with increased z-index.
